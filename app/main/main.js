@@ -46,7 +46,7 @@ angular.module('main', [
             })
             //TODO: pass a parameter here
             .state('main.singleSet', {
-                url: '/singleSet',
+                url: '/singleSet/:setCode',
                 views: {
                     'pageContent': {
                         templateUrl: 'main/templates/single-set.html',
