@@ -30,8 +30,7 @@ angular.module('main')
                         // $scope.cards.push(data); //this just shows  1 card image
 
                         $scope.cards = $scope.cards.concat(data);
-
-                        // $scope.nums.push($scope.deta);
+                         // $scope.nums.push($scope.deta);
 
                         // $scope.nums += $scope.deta;
 
@@ -40,6 +39,8 @@ angular.module('main')
                         $scope.thereAreMoreCards = false;
 
                     }
+                    // $scope.$broadcast('scroll.infiniteScrollComplete');
+
                 });
             }
 

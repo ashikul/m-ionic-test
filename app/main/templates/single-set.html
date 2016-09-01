@@ -4,41 +4,40 @@
 
         <!-- content goes here -->
         <!--<ion-list>-->
-            <!--<ion-item class="item item-divider">-->
-                <!--This is your single-set template!-->
-            <!--</ion-item>-->
-            <!--<ion-item class="item item-icon">-->
-                <!--{{setCode}}-->
-            <!--</ion-item>-->
+        <!--<ion-item class="item item-divider">-->
+        <!--This is your single-set template!-->
+        <!--</ion-item>-->
+        <!--<ion-item class="item item-icon">-->
+        <!--{{setCode}}-->
+        <!--</ion-item>-->
         <!--</ion-list>-->
 
         <!--card list..-->
 
 
         <ion-list>
-            <ion-item ng-repeat="card in cards" class="item-borderless single-card" >
+            <ion-item ng-repeat="card in cards | limitTo: 3" class="item-borderless single-card">
                 <!--works-->
                 <img src="{{card.editions[0].image_url}}" alt="Card Image">
 
                 <!--<ion-item class="item-borderless single-card" ng-repeat="i in nums">-->
                 <!--<div class="">-->
-                    <!--<img src="https://image.deckbrew.com/mtg/multiverseid/398411.jpg" alt="Card Image">-->
+                <!--<img src="https://image.deckbrew.com/mtg/multiverseid/398411.jpg" alt="Card Image">-->
                 <!--</div>-->
-         <!---->
-
+                <!---->
 
                 <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
                 <!--<h4>{{::set.setCode}}</h4>-->
             </ion-item>
         </ion-list>
 
-        <ion-infinite-scroll ng-if="thereAreMoreCards"  immediate-check="false" on-infinite="loadMore()">
+        <ion-infinite-scroll ng-if="thereAreMoreCards" immediate-check="false" on-infinite="loadMore()">
         </ion-infinite-scroll>
 
         <!--//TODO: add another ng-if isThisSet finished-->
 
-        <button ng-if="!thereAreMoreCards"  class="button button-full button-positive" ng-click="setFinished()">
-                Mark This Set As Finished
+        <button ng-if="!thereAreMoreCards" class="button button-full button-positive" ng-click="setFinished()">
+            Mark This Set As Finished
         </button>
 
         <!--immediate-check="false"-->
