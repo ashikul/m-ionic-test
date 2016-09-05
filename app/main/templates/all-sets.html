@@ -16,17 +16,33 @@
         <!--{{cardSets}}-->
 
         <ion-list>
-            <ion-item ng-repeat="set in cardSets"
+            <!--//TODO: remove limit-->
+            <ion-item ng-repeat="set in cardSets | limitTo: 2"
                       class="item-remove-animate  item-icon-right"
                       type="item-text-wrap"
-                      ui-sref="main.singleSet({ setCode:set.setCode })">
-                <i class="ss ss-{{::set.setCode}} ss-3x ss-common ss-fw   ss-uncommon ss-grad"></i>
-                {{::set.setTitle}}
+                      ui-sref="main.singleSet({ setCode:set.setCode })"
+            >
+
+                <!--<div ng-class="::{ test: test(set.setCode) }"></div>-->
+
+
+                <!--<div ng-if="::{  test(set.setCode) }"></div>-->
+
+
+                <i class="ss ss-{{::set.setCode}}  ss-1x  ss-common ss-fw   ss-uncommon ss-grad"
+                   ng-if="set.setExists === true"></i>
+                {{set.setExists}}
+                <!--{{::test(set.setCode) }}-->
+                <!--{{test(set.setCode)}}-->
+                <!--{{::set.setTitle}}-->
                 <i class="icon ion-chevron-right icon-accessory"></i>
                 <!--<h4>{{::set.setCode}}</h4>-->
             </ion-item>
         </ion-list>
-
+        <!--ng-class="::{ 'ss-3x': test(set.setCode) }"-->
+        <!--ng-show="test(set.setCode)"-->
+        <!--ng-if="test(set.setCode)"-->
+        <!--$localForage.getItem('myName')-->
         <!--<ion-item-->
         <!--class="item-remove-animate item-avatar item-icon-right"-->
         <!--type="item-text-wrap"-->
