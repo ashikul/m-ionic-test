@@ -14,10 +14,12 @@ angular.module('main')
         var likedCards = $localForage.instance('likedCards');
         var setCodes = $localForage.instance('setCodes');
 
+        // $scope.nums = [1, 2, 3, 4];
+        // $scope.deta = [5, 6, 7];
 
-        $scope.nums = [1, 2, 3, 4];
-        $scope.deta = [5, 6, 7];
-        $scope.array = {};
+
+        //used for disable checking
+        // $scope.array = {};
         function activateSetCode () {
             setCodes.getItem($stateParams.setCode).then(function (data) {
 
@@ -35,39 +37,47 @@ angular.module('main')
 
         activateSetCode();
         //OFF FOR NOW
-        // activateAPI();
+        activateAPI();
 
         $scope.loadMore = function () {
 
             // //TODO: reAdded when putting back API
-            // if($scope.thereAreMoreCards) {
-            //     $scope.page++;
-            //     return getCardsFromService($scope.setCode, $scope.page).then(function (data) {
-            //         $log.info('Requesting more cards');
-            //         // $log.info(data);
-            //         // // $log.info(data.data);
-            //         // $log.info($scope.cards);
-            //         if(data) {
-            //             $log.info('Valid data');
-            //             // var result = result.concat(data);
-            //             // $scope.cards.push(data); //this just shows  1 card image
-            //
-            //             $scope.cards = $scope.cards.concat(data);
-            //             // $scope.nums.push($scope.deta);
-            //
-            //             // $scope.nums += $scope.deta;
-            //
-            //         } else {
-            //             $log.info('No Data');
-            //             $scope.thereAreMoreCards = false;
-            //
-            //         }
-            //         // $scope.$broadcast('scroll.infiniteScrollComplete');
-            //
-            //     });
-            // }
+            if($scope.thereAreMoreCards) {
+                $scope.page++;
+                var g = getCardsFromService($scope.setCode, $scope.page).then(function (data) {
+                    $log.info('Requesting more cards');
+                    $log.info(data);
+                    // // $log.info(data.data);
+                    $log.info($scope.cards);
+                    if(data.length > 0) {
+                        $log.info('Valid data');
+                        // var result = result.concat(data);
+                        // $scope.cards.push(data); //this just shows  1 card image
 
-            $scope.thereAreMoreCards = false;
+                        $scope.cards = $scope.cards.concat(data);
+
+                        // $scope.cards = data.concat($scope.cards);
+                        // $scope.cards.push(data);
+                        // $scope.$digest();
+
+                        // $scope.nums.push($scope.deta);
+
+                        // $scope.nums += $scope.deta;
+                        // $scope.$broadcast('scroll.infiniteScrollComplete');
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                    } else {
+                        $log.info('No Data');
+                        $scope.thereAreMoreCards = false;
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        // $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                    }
+                    return;
+                    // $scope.$broadcast('scroll.infiniteScrollComplete');
+
+                });
+            }
+            // $scope.thereAreMoreCards = false;
 
             // if(!$scope.yelp.isLoading && $scope.yelp.hasMore) {
             //     $scope.yelp.next().then(function () {
@@ -78,7 +88,7 @@ angular.module('main')
 
         $scope.setFinished = function () {
             $log.log('Clicked set finished!');
-            console.log($scope.finishedSet);
+            // console.log($scope.finishedSet);
             setCodes.setItem($stateParams.setCode, true).then(function (data) {
                 // $log.log(data);
                 // $localForage.getItem('myName').then(function (data) {
@@ -88,7 +98,6 @@ angular.module('main')
 
                 $scope.finishedSet = true;
             });
-
 
         };
 
@@ -103,7 +112,7 @@ angular.module('main')
         //     });
         // };
 
-        $scope.save = function (item) {
+        $scope.save = function (card) {
             console.log('1');
 
             // $localForage.setItem('123123', '123132222')
@@ -120,13 +129,13 @@ angular.module('main')
             //         // we got an error
             //     }
             // );
-            likedCards.setItem(item, 'https://image.deckbrew.com/mtg/multiverseid/398411.jpg').then(function (data) {
+            likedCards.setItem(card.id, card).then(function (data) {
                 $log.log(data);
 
                 //set ng-disabled to true
                 //TODO: add ng-disabled check update!
                 // $scope.nums[item].added = true;
-                $scope.array[item] = true;
+                // $scope.array[card] = true;
                 ionicToast.show('Card saved', 'bottom', false, 1000);
 
                 // $localForage.getItem(item).then(function(data) {
@@ -155,10 +164,8 @@ angular.module('main')
 
         function activateAPI () {
             $scope.setCode = $stateParams.setCode;
-             
 
             //check if set was marked finished
-
 
             //fetch cards from API
             return getCardsFromService($scope.setCode, $scope.page).then(function (data) {

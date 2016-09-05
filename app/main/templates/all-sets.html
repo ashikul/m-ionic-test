@@ -16,8 +16,7 @@
         <!--{{cardSets}}-->
 
         <ion-list>
-            <!--//TODO: remove limit-->
-            <ion-item ng-repeat="set in cardSets | limitTo: 4"
+            <ion-item ng-repeat="set in cardSets"
                       class="item-remove-animate  item-icon-right"
                       type="item-text-wrap"
                       ui-sref="main.singleSet({ setCode:set.setCode, setTitle:set.setTitle })"

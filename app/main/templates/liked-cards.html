@@ -20,7 +20,7 @@
     <ion-list show-delete="false" can-swipe="true">
 
       <ion-item class="item-borderless single-card" ng-repeat="card in cards track by $index">
-        <img class="single-card-image" src="{{card.value}}" alt="Card Image">
+        <img class="single-card-image" src="{{card.value.editions[0].image_url}}" alt="Card Image">
 
 
         <!--//TODO: update share and add delete-->
