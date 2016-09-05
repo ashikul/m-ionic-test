@@ -21,11 +21,13 @@
             <!--<img src="{{card.editions[0].image_url}}" alt="Card Image">-->
 
             <ion-item class="item-borderless single-card" ng-repeat="item in nums">
-                <img src="https://image.deckbrew.com/mtg/multiverseid/398411.jpg" alt="Card Image">
-                <ion-option-button class="button-calm icon ion-android-share-alt"
-                                   ng-click="share()"></ion-option-button>
+                <img class="single-card-image"src="https://image.deckbrew.com/mtg/multiverseid/398411.jpg" alt="Card Image">
+                <!--<ion-option-button class="button-calm icon ion-android-share-alt"-->
+                                   <!--ng-click="share()"></ion-option-button>-->
                 <ion-option-button class="button-assertive icon ion-android-star" ng-click="save(item)"
-                                   ng-disabled="$localForage.getItem(item) || array[item]"></ion-option-button>
+                ></ion-option-button>
+
+                <!--ng-disabled="$localForage.getItem(item) || array[item]"-->
                 <!---->
                 <!--ng-disabled="$localForage.getItem(item) === item"-->
                 <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
@@ -38,7 +40,8 @@
 
         <!--//TODO: add another ng-if isThisSet finished-->
 
-        <button ng-if="!thereAreMoreCards" class="button button-full  button-mark-set " ng-click="setFinished()" ng-disabled="finishedSet">
+        <button ng-if="!thereAreMoreCards" class="button button-full  button-mark-set " ng-click="setFinished()"
+                ng-disabled="finishedSet">
             Mark This Set As Finished
         </button>
 

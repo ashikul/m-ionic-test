@@ -6,20 +6,18 @@ angular.module('main')
 
         $scope.cardSets = {};
 
-        var setCodes = $localForage.createInstance({
-            name: 'setCodes',
-            driver: 'localStorageWrapper'
-        });
+        // var setCodes = $localForage.createInstance({
+        //     name: 'setCodes',
+        //     driver: 'localStorageWrapper'
+        // });
+        //
+        // var likedCards = $localForage.createInstance({
+        //     name: 'likedCards',
+        //     driver: 'localStorageWrapper'
+        // });
 
-        var likedCards = $localForage.createInstance({
-            name: 'likedCards',
-            driver: 'localStorageWrapper'
-        });
-
-        // var setCodes = $localForage.instance('setCodes');
+        var setCodes = $localForage.instance('setCodes');
         // var likedCards = $localForage.instance('likedCards');
-
-
 
         activate();
 
@@ -56,6 +54,20 @@ angular.module('main')
         //     $log.log('hello');
         // })
 
+
+        //used update the dom with ng-switch checks
+        $scope.$on("$ionicView.beforeEnter", function(event, data){
+            // handle event
+            // $log.log('~~~before enter');
+            activateSetCode();
+
+        });
+        
+        // $scope.$on("$ionicView.enter", function(event, data){
+        //     // handle event
+        //     $log.log('~~~~hello enter');
+        // });
+        //
         function activate () {
             return getCards().then(function () {
                 $log.info('Activated Card Sets');

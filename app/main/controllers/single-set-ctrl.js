@@ -11,11 +11,15 @@ angular.module('main')
 
         // $scope.finishedSet = $localForage.getItem($stateParams.setCode);
 
+        var likedCards = $localForage.instance('likedCards');
+        var setCodes = $localForage.instance('setCodes');
+
+
         $scope.nums = [1, 2, 3, 4];
         $scope.deta = [5, 6, 7];
         $scope.array = {};
         function activateSetCode () {
-            $localForage.getItem($stateParams.setCode).then(function (data) {
+            setCodes.getItem($stateParams.setCode).then(function (data) {
 
                 $log.log('teststs');
                 $log.log(data);
@@ -75,7 +79,7 @@ angular.module('main')
         $scope.setFinished = function () {
             $log.log('Clicked set finished!');
             console.log($scope.finishedSet);
-            $localForage.setItem($stateParams.setCode, true).then(function (data) {
+            setCodes.setItem($stateParams.setCode, true).then(function (data) {
                 // $log.log(data);
                 // $localForage.getItem('myName').then(function (data) {
                 //     $log.log(data);
@@ -116,7 +120,7 @@ angular.module('main')
             //         // we got an error
             //     }
             // );
-            $localForage.setItem(item, 'https://image.deckbrew.com/mtg/multiverseid/398411.jpg').then(function (data) {
+            likedCards.setItem(item, 'https://image.deckbrew.com/mtg/multiverseid/398411.jpg').then(function (data) {
                 $log.log(data);
 
                 //set ng-disabled to true
@@ -136,13 +140,13 @@ angular.module('main')
         $scope.share = function () {
             console.log('2');
 
-            $localForage.setItem('myName', 'Olivier Combe').then(function (data) {
-                // $log.log(data);
-                $localForage.getItem('myName').then(function (data) {
-                    $log.log(data);
-                    var myName = data;
-                });
-            });
+            // likedCards.setItem('myName', 'Olivier Combe').then(function (data) {
+            //     // $log.log(data);
+            //     likedCards.getItem('myName').then(function (data) {
+            //         $log.log(data);
+            //         var myName = data;
+            //     });
+            // });
 
             // $log.log($localForage.driver());
             // $log.log($localForage.length());
