@@ -116,7 +116,7 @@ angular.module('main')
             //         // we got an error
             //     }
             // );
-            $localForage.setItem(item, item).then(function (data) {
+            $localForage.setItem(item, 'https://image.deckbrew.com/mtg/multiverseid/398411.jpg').then(function (data) {
                 $log.log(data);
 
                 //set ng-disabled to true

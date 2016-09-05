@@ -4,4 +4,8 @@ angular.module('main')
 
   $log.log('Hello from your Controller: HomeCtrl in module main:. This is your controller:', this);
 
+  
+
+
+
 });

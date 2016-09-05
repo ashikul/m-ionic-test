@@ -17,7 +17,7 @@
 
         <ion-list>
             <!--//TODO: remove limit-->
-            <ion-item ng-repeat="set in cardSets | limitTo: 2"
+            <ion-item ng-repeat="set in cardSets | limitTo: 4"
                       class="item-remove-animate  item-icon-right"
                       type="item-text-wrap"
                       ui-sref="main.singleSet({ setCode:set.setCode })"
@@ -28,13 +28,21 @@
 
                 <!--<div ng-if="::{  test(set.setCode) }"></div>-->
 
+                <!--//ssgrad is off-->
 
-                <i class="ss ss-{{::set.setCode}}  ss-1x  ss-common ss-fw   ss-uncommon ss-grad"
-                   ng-if="set.setExists === true"></i>
-                {{set.setExists}}
+                <span ng-switch="set.setExists">
+                      <i class="ss ss-{{::set.setCode}}  ss-3x  ss-rare ss-fw      "
+                         ng-switch-when="true"></i>
+                          <i class="ss ss-{{::set.setCode}}  ss-3x  ss-common ss-fw     "
+                             ng-switch-default></i>
+                </span>
+
+                <!--<i class="ss ss-{{::set.setCode}}  ss-3x  ss-common ss-fw   ss-uncommon ss-grad"-->
+                <!--ng-if="set.setExists"></i>-->
+                <!--{{::set.setExists}}-->
                 <!--{{::test(set.setCode) }}-->
                 <!--{{test(set.setCode)}}-->
-                <!--{{::set.setTitle}}-->
+                {{::set.setTitle}}
                 <i class="icon ion-chevron-right icon-accessory"></i>
                 <!--<h4>{{::set.setCode}}</h4>-->
             </ion-item>

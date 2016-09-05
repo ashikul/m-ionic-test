@@ -4,19 +4,47 @@
 
   img {
 
-
     //box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
-
-  }
-  
-  
-  .test {
-    border: 3px solid #000;
   }
 
-  .test1 {
-    border: 3px solid #000;
-    color: red;
+  //.test {
+  //  border: 3px solid #000;
+  //}
+  //
+  //.test1 {
+  //  border: 3px solid #000;
+  //  color: red;
+  //}
+
+}
+
+.button-mark-set {
+  background-color: #D5B365;
+  color: #fff;
+}
+
+.home-page {
+  .mtg-logo{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
+  .logo-title{
+    text-align: center;
+  }
+
+
+  .list:last-child.card {
+    margin-bottom: 0;
+  }
+
+  .card {
+    margin-top: 0;
+  }
+
+  .item-divider{
+    text-align: center;
+  }
+
 }

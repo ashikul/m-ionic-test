@@ -6,10 +6,24 @@ angular.module('main')
 
         $scope.cardSets = {};
 
+        var setCodes = $localForage.createInstance({
+            name: 'setCodes',
+            driver: 'localStorageWrapper'
+        });
+
+        var likedCards = $localForage.createInstance({
+            name: 'likedCards',
+            driver: 'localStorageWrapper'
+        });
+
+        // var setCodes = $localForage.instance('setCodes');
+        // var likedCards = $localForage.instance('likedCards');
+
+
+
         activate();
 
-
-        $scope.$watch('cardSets ', function() {
+        $scope.$watch('cardSets ', function () {
             $log.log('WATCHING');
             activateSetCode();
 
@@ -17,11 +31,11 @@ angular.module('main')
             //     populateData(newArray[i]);
             // }
         });
-        
+
         $scope.test = function (item) {
             // console.log('test' + item);
             // var deferred = $q.defer();
-            return $localForage.getItem(item).then(function (data) {
+            return setCodes.getItem(item).then(function (data) {
                 // $log.log(data);
                 // $log.log(data);
 
@@ -45,23 +59,25 @@ angular.module('main')
         function activate () {
             return getCards().then(function () {
                 $log.info('Activated Card Sets');
-             });
+            });
         }
 
         function activateSetCode () {
-        
+
             $log.log('Activating SetCodes');
             angular.forEach($scope.cardSets, function (value, key) {
                 // $log.log($scope.cardSets);
-                $scope.cardSets[key].setExists = $localForage.getItem($scope.cardSets[key].setCode).then(function (data) {
-        
-                    $log.log('teststs');
-                    $log.log(data);
-                    if(data === true){
-                        return true;
-                    } else {
-                        return false;
+                setCodes.getItem($scope.cardSets[key].setCode).then(function (data) {
+
+                    // $log.log('teststs');
+                    // $log.log(data);
+                    if(data === true) {
+                        $scope.cardSets[key].setExists = true;
+                        // return true;
                     }
+                    // else {
+                    //     return false;
+                    // }
                     // return data;
                     // $scope.finishedSet = data;
                     // $log.log(data);
@@ -69,12 +85,12 @@ angular.module('main')
                     //     $log.log(data);
                     //     var myName = data;
                     // });
-        
+
                 });
-        
+
             });
             // $scope.$digest();
-        
+
         };
 
         function getCards () {
