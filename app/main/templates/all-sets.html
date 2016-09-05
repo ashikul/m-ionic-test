@@ -1,6 +1,6 @@
 <ion-view view-title="Card Sets">
     <!-- do you want padding? -->
-    <ion-content class="padding">
+    <ion-content class="padding custom-background">
 
         <!-- content goes here -->
         <!--<ion-list>-->
@@ -20,7 +20,7 @@
             <ion-item ng-repeat="set in cardSets | limitTo: 4"
                       class="item-remove-animate  item-icon-right"
                       type="item-text-wrap"
-                      ui-sref="main.singleSet({ setCode:set.setCode })"
+                      ui-sref="main.singleSet({ setCode:set.setCode, setTitle:set.setTitle })"
             >
 
                 <!--<div ng-class="::{ test: test(set.setCode) }"></div>-->

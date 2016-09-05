@@ -1,7 +1,13 @@
-<ion-view view-title="main module">
+<ion-view view-title="{{::setTitle}}">
+    <!--//TODO: add title-->
     <!-- do you want padding? -->
-    <ion-content class="">
 
+
+    <ion-content class="custom-background">
+
+        <div class="bar bar-energized card-view-subheader">
+            <h2 class="title">Swipe Right for Actions</h2>
+        </div>
         <!-- content goes here -->
         <!--<ion-list>-->
         <!--<ion-item class="item item-divider">-->
@@ -21,9 +27,10 @@
             <!--<img src="{{card.editions[0].image_url}}" alt="Card Image">-->
 
             <ion-item class="item-borderless single-card" ng-repeat="item in nums">
-                <img class="single-card-image"src="https://image.deckbrew.com/mtg/multiverseid/398411.jpg" alt="Card Image">
+                <img class="single-card-image" src="https://image.deckbrew.com/mtg/multiverseid/398411.jpg"
+                     alt="Card Image">
                 <!--<ion-option-button class="button-calm icon ion-android-share-alt"-->
-                                   <!--ng-click="share()"></ion-option-button>-->
+                <!--ng-click="share()"></ion-option-button>-->
                 <ion-option-button class="button-assertive icon ion-android-star" ng-click="save(item)"
                 ></ion-option-button>
 

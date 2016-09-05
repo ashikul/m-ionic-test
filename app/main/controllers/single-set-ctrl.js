@@ -8,7 +8,7 @@ angular.module('main')
         $scope.cards = [];
         $scope.page = 0;
         $scope.thereAreMoreCards = true;
-
+        $scope.setTitle = $stateParams.setTitle;
         // $scope.finishedSet = $localForage.getItem($stateParams.setCode);
 
         var likedCards = $localForage.instance('likedCards');
@@ -155,6 +155,7 @@ angular.module('main')
 
         function activateAPI () {
             $scope.setCode = $stateParams.setCode;
+             
 
             //check if set was marked finished
 
