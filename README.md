@@ -1,3 +1,9 @@
+commands:
+gulp --cordova "run android"
+
+
+
+
 # mtg-app
 This project was generated with Generator-M-Ionic v1.9.2. For more info visit the [repository](https://github.com/mwaylabs/generator-m-ionic) or check out the README below.
 
